@@ -8,7 +8,7 @@ sample_rate = 44100
 with open("INIT.CMD", 'r') as file:
     mesg = ''.join(file.readlines())
 """
-mesg = "A" #"Hello, world!"
+mesg = "A"*10+'B'*10 #"Hello, world!"
 
 # Send 8 bits per character
 symbols = [int(bit) for byte in mesg for bit in bin(ord(byte))[2:].zfill(8)]
@@ -155,7 +155,7 @@ except KeyError:
 print(symbols)
 """
 
-symbol_length = 2 #31.25 # PSK31
+symbol_length = 31.25 # PSK31
 frequency = 1000 # Signal frequency in Hertz
 Lof = 1 # I/Q local oscillator frequency (idk what to set here)
 
@@ -170,7 +170,7 @@ num_samples *= symbol_length
 print(num_samples)
 num_samples = ceil(num_samples)
 print(num_samples)
-exit(0)
+#exit(0)
 
 for i in range(0, num_samples):
     x = (i/sample_rate)*frequency * 2*pi
@@ -191,5 +191,5 @@ for i in range(0, num_samples):
     """
     
     # Output as unsigned PCM mono
-    #raw.write(sample.to_bytes(length=1, byteorder='big'))
-    stdout.buffer.write(bytes([sample])) #.to_bytes(length=1, byteorder='big'))
+    raw.write(sample.to_bytes(length=1, byteorder='big'))
+    #stdout.buffer.write(bytes([sample])) #.to_bytes(length=1, byteorder='big'))

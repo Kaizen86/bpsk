@@ -223,6 +223,7 @@ fn main() {
     println!("symbol_length {:?}", num_samples);
     num_samples = num_samples.ceil();
     println!("ceil() {:?}", num_samples);
+    println!("bytes: {:?}", num_samples/8.0);
     //*/
     //std::io::stdout()
 }
